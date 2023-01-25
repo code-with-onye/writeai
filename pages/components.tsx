@@ -1,5 +1,5 @@
 import { Main, Meta } from "../layout";
-import { Dropdown, Input } from "../components/ui/Index";
+import { Dropdown, Input } from "../components/ui";
 import Button from "../components/ui/Button";
 
 export default function Components() {
