@@ -15,10 +15,10 @@ const Main = ({ meta, children }: IMainProps) => {
         {/* Header */}
         <Header />
 
-        <div className="w-full px-4">{children}</div>
+        <div className="w-full ">{children}</div>
 
         {/* Footer */}
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </div>
   );

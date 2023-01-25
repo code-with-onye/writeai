@@ -1,19 +1,17 @@
 import type { NextApiRequest, NextApiResponse } from "next";
+import { Prompts } from "./config";
 
-export default async function getApiKe(
+export default async function brainstorm(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   if (req.method === "POST" || "GET") {
-    const { key } = req.body;
-    
-    if (!key) {
-      res.status(404).send("api key is required");
-    }
-
+    const { topic, language } = req.body;
     try {
+      const prompt = `Brainstorm a list of innovative solutions for\n\n${topic}`;
+      const resp = await Prompts({ prompt });
       res.status(200).json({
-        apiKey: key,
+        apiKey: resp.data.choices[0].text,
       });
     } catch (err) {
       console.log(err);
@@ -21,4 +19,3 @@ export default async function getApiKe(
     }
   }
 }
-

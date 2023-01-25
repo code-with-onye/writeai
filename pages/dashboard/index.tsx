@@ -1,5 +1,5 @@
 import { Meta, Main } from "../../layout";
-import { Form, Editor, Template } from "../../components/sections";
+import { Form, Editor, Template, Sidebar } from "../../components/sections";
 import History from "../../components/sections/History";
 import Favorite from "../../components/sections/Favorite";
 
@@ -13,10 +13,15 @@ export default function dashboard() {
         />
       }
     >
-      <Template />
+      {/* <Template />
       <div className="flex items-start w-full flex-col sm:flex-row  gap-x-24 mt-4">
         <History />
         <Favorite />
+      </div> */}
+      <div className="flex flex-col sm:flex-row  items-center ">
+        <Sidebar />
+        <div>cool</div>
+        {/* <Body/> */}
       </div>
     </Main>
   );

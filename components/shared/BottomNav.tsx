@@ -3,7 +3,7 @@ import { route } from "../../data";
 
 const BottomNav = () => {
   return (
-    <nav className="bg-gray-50 dark:bg-gray-700 w-full">
+    <nav className="bg-gray-50 dark:bg-gray-700 w-full ">
       <div className="max-w-screen-xl px-4 py-3 mx-auto md:px-6">
         <div className="flex items-center">
           <ul className="flex flex-row mt-0 mr-6 space-x-8 text-sm font-medium">
