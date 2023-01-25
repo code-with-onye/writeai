@@ -1,6 +1,6 @@
 import Avatar from "./Avatar";
 import Card from "./Card";
-import Input from "./input";
+import Input from "./Input";
 import Dropdown from "./Dropdown";
 import Button from "./Button";
 
