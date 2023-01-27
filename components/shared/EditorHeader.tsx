@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import remixiconUrl from "remixicon/fonts/remixicon.symbol.svg";
-import { IBold, IHeading, IItalic } from "../ui/Icons";
+import { IBold, IHeading, IItalic, IOrdered, ISubHeading } from "../ui/Icons";
 
 interface IEditorProps {
   editor: any;
@@ -30,6 +30,19 @@ const EditorHeader = (props: IEditorProps) => {
       isActive: props.editor?.isActive("heading", { level: 1 }),
       icon: <IHeading />,
     },
+    {
+      title: "subHeading",
+      action: () =>
+        props.editor.chain().focus().toggleHeading({ level: 3 }).run(),
+      isActive: props.editor?.isActive("heading", { level: 3 }),
+      icon: <ISubHeading />,
+    },
+    {
+      title: "orderedlist",
+      action: () => props.editor?.chain().focus().toggleOrderedList().run(),
+      isActive: props.editor?.isActive("orderedList"),
+      icon: <IOrdered />,
+    },
   ];
 
   // Editor Buttton
@@ -39,9 +52,10 @@ const EditorHeader = (props: IEditorProps) => {
   }
 
   return (
-    <div className="flex gap-x-2">
+    <div className="flex gap-x-2 sticky top-0 bg-white/10 z-10   backdrop-filter backdrop-blur-2xl bg-opacity-10">
       {items.map((item, i) => (
         <button
+          key={i}
           onClick={item.action}
           disabled={item.disabled}
           className={clsx([

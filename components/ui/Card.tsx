@@ -1,4 +1,4 @@
-import { Avatar } from "./Index";
+import { Avatar } from "./";
 
 interface ICardProps {
   children: React.ReactNode;

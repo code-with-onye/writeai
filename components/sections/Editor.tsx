@@ -40,6 +40,27 @@ export default function Editor() {
         <br />
         — Mom
       </blockquote>
+       <blockquote>
+        Wow, that’s amazing. Good work, boy! 👏
+        <br />
+        — Mom
+      </blockquote> <blockquote>
+        Wow, that’s amazing. Good work, boy! 👏
+        <br />
+        — Mom
+      </blockquote> <blockquote>
+        Wow, that’s amazing. Good work, boy! 👏
+        <br />
+        — Mom
+      </blockquote> <blockquote>
+        Wow, that’s amazing. Good work, boy! 👏
+        <br />
+        — Mom
+      </blockquote> <blockquote>
+        Wow, that’s amazing. Good work, boy! 👏
+        <br />
+        — Mom
+      </blockquote>
     `,
   });
 
