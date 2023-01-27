@@ -1,6 +1,7 @@
 import Link from "next/link";
 import React from "react";
-import { Card, Avatar } from "../ui";
+
+import { Card, Avatar } from "../ui/";
 
 const FavoriteCard = () => {
   return (

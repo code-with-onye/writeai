@@ -20,7 +20,7 @@ export default function dashboard() {
       </div> */}
       <div className="flex flex-col sm:flex-row  items-center ">
         <Sidebar />
-        <div>cool</div>
+        <Editor />
         {/* <Body/> */}
       </div>
     </Main>

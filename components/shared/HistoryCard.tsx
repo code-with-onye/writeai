@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Card, Avatar } from "../ui/Index";
+import { Card, Avatar } from "../ui";
 
 const HistoryCard = () => {
   return (
