@@ -1,6 +1,5 @@
 import { Main, Meta } from "../layout";
 import Button from "../components/ui/Button";
-import Dropdown from "../components/ui/Dropdown";
 import Input from "../components/ui/Input";
 
 export default function Components() {
@@ -15,11 +14,6 @@ export default function Components() {
             type="password"
             placeholder="Enter email"
             content="Enter Email"
-          />
-          <Dropdown
-            contentData={country}
-            content="select country"
-            className=" "
           />
         </div>
       </div>
