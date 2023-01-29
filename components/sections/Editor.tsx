@@ -7,8 +7,7 @@ export default function Editor() {
     extensions: [StarterKit],
     editorProps: {
       attributes: {
-        class:
-          "prose prose-sm sm:prose lg:prose-lg xl:prose-2xl m-5 focus:outline-none",
+        class: "prose prose-sm sm:prose lg:prose-lg m-5 focus:outline-none",
       },
     },
     content: `
@@ -65,7 +64,7 @@ export default function Editor() {
   });
 
   return (
-    <div className="w-full bg-slate-100 text-gray-800  h-screen overflow-y-scroll border-8 border-gray-100">
+    <div className="w-full lg:w-[70%] bg-slate-100 text-gray-800  h-screen overflow-y-scroll border-8 border-gray-100">
       {/* Editor Header */}
       <EditorHeader editor={editor} />
 

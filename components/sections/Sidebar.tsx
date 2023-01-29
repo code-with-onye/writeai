@@ -1,24 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Dropdown, Input } from "../ui";
+import { Lanuage } from "../../data/language";
 
 const Sidebar = () => {
-  const Tone = ["Convicing", "casual"];
+  const Tone = ["Convicing", "Casual", "Formal", "Funny"];
   const Language = ["English", "Spanisch"];
+
+  const [selcted, setSelected] = useState({
+    language: "English",
+    tone: "Sad",
+  });
+
   return (
-    <aside className="lg:w-[30%] md:w-[40%] w-full bg-slate-300 sm:h-screen h-full p-3 flex flex-col gap-y-6">
+    <aside className="lg:w-[35%] md:w-[40%] w-full bg-slate-300 sm:h-screen h-full p-3 flex flex-col gap-y-6">
       <div className="flex gap-x-2 items-center">
         <Dropdown
-          contentData={Language}
-          content="Select Language"
-          className="w-32"
+          options={Lanuage}
+          selected={selcted.language}
+          onChange={(val) => setSelected({ ...selcted, language: val })}
+          label="Language"
         />
-        <Dropdown contentData={Tone} content="Select Tone" className="w-32" />
+
+        <Dropdown
+          options={Tone}
+          selected={selcted.tone}
+          onChange={(val) => setSelected({ ...selcted, tone: val })}
+          label="tone"
+        />
       </div>
       <div>
         <Dropdown
-          contentData={Tone}
-          content="Choose use case"
-          className="w-[20.5rem]"
+          options={Tone}
+          selected={selcted.tone}
+          onChange={(val) => setSelected({ ...selcted, tone: val })}
+          label="Choose Use Case
+"
         />
       </div>
       <div>
@@ -34,11 +50,17 @@ const Sidebar = () => {
       </div>
       <div className="flex gap-x-2 items-center">
         <Dropdown
-          contentData={Language}
-          content="Select Language"
-          className="w-32"
+          options={Tone}
+          selected={selcted.tone}
+          onChange={(val) => setSelected({ ...selcted, tone: val })}
+          label="Select Language"
         />
-        <Dropdown contentData={Tone} content="Select Tone" className="w-32" />
+        <Dropdown
+          options={Tone}
+          selected={selcted.tone}
+          onChange={(val) => setSelected({ ...selcted, tone: val })}
+          label="Tone"
+        />
       </div>
       <span className="text-xs font-semibold tracking-wide">
         Please review and comply with Facebook ad terms, Google ad terms,

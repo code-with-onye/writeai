@@ -1,69 +1,94 @@
-import clsx from "clsx";
-import { useState } from "react";
+import React, { useState, useRef } from "react";
+import Link from "next/link";
 
-interface IDropdownContent {
-  content?: string;
-  onSelect?: () => void;
-}
-
-interface IDropdown {
-  contentData: string[];
-  content?: string;
+interface Props {
+  options:
+    | {
+        name: string;
+        code: string;
+        flag: string;
+      }[]
+    | string[];
+  selected: string;
+  onChange: (val: string) => void;
   className?: string;
+  label?: string;
 }
 
-const DropdownContent = (props: IDropdownContent) => {
-  return (
-    <div
-      className="w-full hover:bg-slate-600  hover:text-white text-black px-2 py-2 cursor-pointer "
-      onClick={props.onSelect}
-    >
-      <p> {props.content}</p>
-    </div>
-  );
-};
+const Dropdown: React.FC<Props> = ({
+  options,
+  selected,
+  onChange,
+  className,
+  label,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
-const Dropdown = (props: IDropdown) => {
-  const [toogle, setToogle] = useState<boolean>(false);
-  const [selectCountry, setSelectCountry] = useState<string>("USA");
+  const handleClickOutside = (event: MouseEvent) => {
+    if (ref.current && !ref.current.contains(event.target as Node)) {
+      setIsOpen(false);
+    }
+  };
+
+  React.useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  });
 
   return (
-    <div className={clsx(["w-full"])}>
+    <div className={`relative inline-block w-full  ${className}`} ref={ref}>
       <label htmlFor="drodown" className="text-xs font-semibold capitalize">
-        {props.content}
+        {label}
       </label>
       <button
         aria-haspopup="true"
         aria-controls="menu"
         type="button"
-        className="flex items-center justify-between bg-slate-200 p-2 w-full rounded-3xl"
-        onClick={() => (toogle ? setToogle(false) : setToogle(true))}
+        className="flex items-center justify-between bg-slate-200 px-2 py-2 w-full rounded-3xl mt-2"
+        onClick={() => setIsOpen(!isOpen)}
       >
-        <div>
-          <span>{selectCountry}</span>
-        </div>
-        <svg viewBox="0 0 24 24" fill="#000" width="1.5rem" height="1.5rem">
-          <path d="M24 24H0V0h24v24z" fill="none" opacity=".87"></path>
-          <path d="M15.88 9.29L12 13.17 8.12 9.29c-.39-.39-1.02-.39-1.41 0-.39.39-.39 1.02 0 1.41l4.59 4.59c.39.39 1.02.39 1.41 0l4.59-4.59c.39-.39.39-1.02 0-1.41-.39-.38-1.03-.39-1.42 0z"></path>
+        <p className="text-sm tracking-wide"> {selected}</p>
+        <svg
+          className="absolute right-0 h-5 w-5 text-gray-400 pointer-events-none"
+          fill="currentColor"
+          viewBox="0 0 20 20"
+        >
+          <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
         </svg>
       </button>
-      <div
-        className={clsx([
-          "w-full  bg-slate-200 rounded-md absolute z-10 ",
-          props.className,
-        ])}
-      >
-        {toogle &&
-          props.contentData?.map((data) => (
-            <DropdownContent
-              content={data}
-              onSelect={() => {
-                setToogle(false);
-                setSelectCountry(data);
-              }}
-            />
-          ))}
-      </div>
+
+      {isOpen && (
+        <div className="origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg h-40 overflow-y-scroll z-20">
+          <div className="py-1 rounded-md bg-white shadow-xs">
+            {options.map((option) => (
+              <button
+                key={typeof option === "string" ? option : option.name}
+                className={`block w-full text-left px-4 py-2 text-sm leading-5 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:bg-gray-100 focus:text-gray-900 ${
+                  (typeof option === "string" && option === selected) ||
+                  (typeof option !== "string" && option.name === selected)
+                    ? "bg-black text-white"
+                    : ""
+                }`}
+                onClick={() => {
+                  setIsOpen(false);
+                  onChange(
+                    typeof option === "string"
+                      ? option
+                      : ` ${option.flag} ${option.name}`
+                  );
+                }}
+              >
+                {typeof option === "string"
+                  ? option
+                  : `${option.flag} ${option.name} `}
+              </button>
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   );
 };

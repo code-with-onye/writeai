@@ -18,6 +18,7 @@ export default function dashboard() {
         <History />
         <Favorite />
       </div> */}
+
       <div className="flex flex-col sm:flex-row  items-center ">
         <Sidebar />
         <Editor />
