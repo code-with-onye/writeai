@@ -10,16 +10,16 @@ interface ITemplateCardProps {
 
 export default function TemplateCard(props: ITemplateCardProps) {
   return (
-    <Card>
+    <Card className="h-40">
       <Link href="/" className="flex flex-col gap-y-2">
-        <div className="flex items-center gap-x-3">
+        <div className="flex items-center gap-x-3 mt-2 border-b-2 border-black pb-3">
           <Avatar />
           <h3 className="text-xs lg:text-sm  font-semibold tracking-wide">
             {props.prompt}
             {/* Audience */}
           </h3>
         </div>
-        <p className="text-xs tracking-wide leading-5">
+        <p className="text-sm tracking-wide leading-5">
           {props.description}
           {/* Lorem ipsum dolor sit amet consectetur adipisicing */}
         </p>

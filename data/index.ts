@@ -55,3 +55,18 @@ export const template = {
     },
   ],
 };
+
+export const templateSelection = [
+  {
+    label: "Ecommerce",
+    href: "/template/ecommerse",
+  },
+  {
+    label: "eduction",
+    href: "/template/educatin",
+  },
+  {
+    label: "blogging",
+    href: "/template/blogging",
+  },
+];

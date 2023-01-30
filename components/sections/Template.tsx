@@ -3,17 +3,14 @@ import { TemplateCard } from "../shared";
 
 export default function Template() {
   return (
-    <div className="w-full mt-4">
-      <h3 className="text-lg font-bold">{template.heading}</h3>
-      <div className="flex overflow-scroll snap-x gap-x-2 mt-2">
-        {template.data.map((data, i) => (
-          <TemplateCard
-            prompt={data.prompt}
-            description={data.description}
-            key={i}
-          />
-        ))}
-      </div>
+    <div className="w-full grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-3 px-4">
+      {template.data.map((data, i) => (
+        <TemplateCard
+          prompt={data.prompt}
+          description={data.description}
+          key={i}
+        />
+      ))}
     </div>
   );
 }
